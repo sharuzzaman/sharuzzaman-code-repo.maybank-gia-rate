@@ -24,7 +24,10 @@ import urllib2
 from BeautifulSoup import BeautifulSoup
 import datetime
 
-website=urllib2.urlopen('http://www.maybank2u.com.my/mbbfrx/gold_rate.htm')
+#maybank website looking for user-agent header
+req = urllib2.Request('http://www.maybank2u.com.my/mbbfrx/gold_rate.htm')
+req.add_header('User-Agent', 'Mozilla')
+website=urllib2.urlopen(req)
 data=website.read()
 
 soup = BeautifulSoup(data)
